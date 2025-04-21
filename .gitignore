@@ -1,0 +1,14 @@
+venv/
+.env
+
+build/
+__pycache__/
+*.pyc
+
+.DS_Store
+Thumbs.db
+
+docker-compose.yml
+dockerfile
+
+.vscode/
