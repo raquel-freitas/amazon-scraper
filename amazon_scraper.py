@@ -12,7 +12,7 @@ TARGET_VARIANT_ALT = "30ml"
 PRICE_SELECTOR = ".a-price .a-offscreen"
 AVAILABILITY_SELECTOR = "span#twisterAvailability"
 SHEET_ID = "1jD-7a2mBkyXWOxE0KE3aCA7FJAbPBaUmxCrv0YOkCJU"
-SHEET_NAME = "Sheet 1"
+SHEET_NAME = "Página1"
 
 def append_to_google_sheets(timestamp, price_found):
     print("Saving to Google Sheets")
