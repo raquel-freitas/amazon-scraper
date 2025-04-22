@@ -1,2 +1,3 @@
-boto3
 playwright
+gspread
+oauth2client

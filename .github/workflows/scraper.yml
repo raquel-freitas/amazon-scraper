@@ -2,8 +2,8 @@ name: Hourly Amazon Price Scraper
 
 on:
   schedule:
-    - cron: '0 * * * *' 
-  workflow_dispatch:
+    - cron: '0 * * * *'  
+  workflow_dispatch:      
 
 jobs:
   scrape:
@@ -25,7 +25,4 @@ jobs:
       - name: Run scraper
         run: python amazon_scraper.py
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-          S3_FILE_KEY: product_prices.csv
+          GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
