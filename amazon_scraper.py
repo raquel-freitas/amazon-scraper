@@ -6,6 +6,7 @@ import json
 import base64
 import os
 from oauth2client.service_account import ServiceAccountCredentials
+import pytz
 
 PRODUCT_URL = "https://www.amazon.com.br/dp/B009UKJ5RK"
 TARGET_VARIANT_ALT = "30ml"
@@ -13,6 +14,7 @@ PRICE_SELECTOR = ".a-price .a-offscreen"
 AVAILABILITY_SELECTOR = "span#twisterAvailability"
 SHEET_ID = "1jD-7a2mBkyXWOxE0KE3aCA7FJAbPBaUmxCrv0YOkCJU"
 SHEET_NAME = "Página1"
+br_timezone = pytz.timezone('America/Sao_Paulo')
 
 def append_to_google_sheets(timestamp, price_found):
     print("Saving to Google Sheets")
@@ -42,8 +44,10 @@ async def scraper():
             await page.wait_for_load_state('networkidle', timeout=60000)
         except TimeoutError:
             print("Timeout")
-
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # br timezone 
+        now = datetime.now(br_timezone)
+        timestamp = now.strftime("%Y-%m-%d %H:%M:%S")
         price_found = "N/A"
 
         variant_img = page.locator(f'img[alt="{TARGET_VARIANT_ALT}"]')
